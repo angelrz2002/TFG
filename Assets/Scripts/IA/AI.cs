@@ -14,6 +14,8 @@ public class AI : MonoBehaviour
     // Esto es un Array de las posiciones que necesitas
     public Transform[] destinations;
 
+    public float distanceToFollowPath = 2;
+
     private int indice = 0;
 
     [Header("-----------¿ FollowPlayer ?---------------")]
@@ -61,8 +63,23 @@ public class AI : MonoBehaviour
     public void enemyPath()
     {
 
+        navMeshAgent.destination = destinations[indice].position;
 
+        // Comprueba si la posicion de nuestro enemigo  es menor o igual a la distancia de llegar a ese punto que le marcamos
 
+        if (Vector3.Distance(transform.position, destinations[indice].position) <=  distanceToFollowPath)
+        {
+            // Comprobacion al llegar al punto de si hay otro punto mas en el array o no
+            if (destinations[indice] != destinations[destinations.Length - 1] )
+            {
+                indice++; 
+            }
+            else
+            {
+                indice = 0;
+            }
+
+        }
 
     }
 
