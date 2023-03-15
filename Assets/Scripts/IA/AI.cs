@@ -63,7 +63,11 @@ public class AI : MonoBehaviour
     public void enemyPath()
     {
 
+<<<<<<< Updated upstream
         navMeshAgent.destination = destinations[indice].position;
+=======
+        navMeshAgent.SetDestination( destinations[indice].position);
+>>>>>>> Stashed changes
 
         // Comprueba si la posicion de nuestro enemigo  es menor o igual a la distancia de llegar a ese punto que le marcamos
 
