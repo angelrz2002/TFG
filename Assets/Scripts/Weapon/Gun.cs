@@ -18,12 +18,13 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
+        shotRateTime += Time.deltaTime;
         // Para disparar con el click izq del raton
         if (Input.GetButtonDown("Fire1")){
             
             // Si el tiempo actual es mayor a la variable te dejara disparar
             // Segunda condicion para saber si el arma tiene municion o no.
-            if(Time.time > shotRateTime && GameManager.Instance.gunAmmo > 0)
+            if(shotRate < shotRateTime && GameManager.Instance.gunAmmo > 0)
             {
                 // Cada vez que se dispara resta la municion del arma.
                 GameManager.Instance.gunAmmo --;
@@ -36,7 +37,7 @@ public class Gun : MonoBehaviour
                 // Es para añadir una fuerza hacia adelante y que no este parada.
                 newBullet.GetComponent<Rigidbody>().AddForce(spawnPoint.forward * shotForce);
 
-                shotRateTime = Time.time + shotRate;
+                shotRateTime = 0;
 
                 Destroy(newBullet, 2);
             }

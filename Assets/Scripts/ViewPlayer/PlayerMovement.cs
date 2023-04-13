@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController CharacterController;
     public float speed = 12f;
 
-    private float gravity = -10f;
+    public float gravity = -10;
     Vector3 velocity;
 
 
@@ -40,14 +40,15 @@ public class PlayerMovement : MonoBehaviour
         /*-------------Para el salto---------------*/
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+            velocity.y = Mathf.Sqrt(jumpHeight * -gravity * 3);
         }
-        CharacterController.Move(move * speed * Time.deltaTime);
        
 
         /*--Trabaja la gravedad del personaje para que este caiga una  velocidad que se quiera----*/
         velocity.y += gravity * Time.deltaTime;
-        CharacterController.Move(velocity * Time.deltaTime);
+        move *= speed;
+        move.y = velocity.y;
+        CharacterController.Move(move * Time.deltaTime);
         /*----------------------------------------------------------------------------------------*/
     }
 }

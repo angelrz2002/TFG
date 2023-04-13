@@ -454,7 +454,6 @@ GameObject:
   - component: {fileID: 1275072635017427292}
   - component: {fileID: 1275072635017427293}
   - component: {fileID: 1275072635017427265}
-  - component: {fileID: 7880717706617901568}
   - component: {fileID: 5522393951325868049}
   m_Layer: 7
   m_Name: Player
@@ -567,22 +566,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   jumpHeight: 2
---- !u!114 &7880717706617901568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1275072635017427290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e43f27730f858d242b20244e7d6106a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 7577040311773648089}
-  bullet: {fileID: 562991993999767373, guid: 60957d6d052ac614bacff55bf107991a, type: 3}
-  shotForce: 1500
-  shotRate: 0.5
 --- !u!114 &5522393951325868049
 MonoBehaviour:
   m_ObjectHideFlags: 0
