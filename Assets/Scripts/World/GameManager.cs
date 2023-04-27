@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
 
     public Text ammoText; // Para saber la municion que tiene y mostrala en el camvas.
     public Text healthText;
@@ -26,8 +28,23 @@ public class GameManager : MonoBehaviour
         // Paso las variables a ToString()
         // El update es para que vaya actualizando tanto la vida
         // como la municion en el CAMVAS todo el rato.
-        ammoText.text = gunAmmo.ToString(); 
+        ammoText.text = gunAmmo.ToString();
         healthText.text = health.ToString();
     }
 
+    public void LoseHealth(int healthToReduce)
+    {
+        health -= healthToReduce;
+        CheckHealth();
+    }
+
+    public void CheckHealth()
+    {
+        if (health <= 0)
+        {
+            Debug.Log("Muerto");
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerInteractions : MonoBehaviour
 {
+    public Transform startPosition;
+
     private void OnTriggerEnter(Collider other)
     {
 
@@ -18,6 +20,16 @@ public class PlayerInteractions : MonoBehaviour
             GameManager.Instance.gunAmmo += other.gameObject.GetComponent<AmmoBox>().ammo;
 
             Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("DeathFloor"))
+        {
+            // Perder vida y respawn del player.
+            GameManager.Instance.LoseHealth(50);
+
+            GetComponent<CharacterController>().enabled = false;
+            gameObject.transform.position = startPosition.position;
+            GetComponent<CharacterController>().enabled = true;
         }
     }
 }
